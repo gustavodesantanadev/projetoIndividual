@@ -116,6 +116,7 @@ footer {
 
 .containerHistoria{
     display: flex;
+    max-height: 80vw;
     flex-direction: column;
     background-color: white;
     justify-content:center; 
