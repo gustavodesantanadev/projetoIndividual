@@ -81,7 +81,7 @@ footer {
 }
 
 .containerImagemSobre{
-    width: 50%;
+    width: 40%;
     padding: 3.125rem 3.125rem 3.125rem 3.125rem;
     justify-content:center;
 }
@@ -116,7 +116,6 @@ footer {
 
 .containerHistoria{
     display: flex;
-    max-height: 80vw;
     flex-direction: column;
     background-color: white;
     justify-content:center; 
@@ -139,7 +138,6 @@ footer {
 
 .textoMinhaHistoria{
     font-size: 18px;
-    /* border: 1px solid black; */
 }
 
 .containerConteudoMH{
@@ -150,6 +148,7 @@ footer {
 .containerValores{
     display: flex;
     width: 100%;
+    padding: 30px;
     flex-direction: column;
     align-items: center;
     background-color:black;
@@ -208,8 +207,24 @@ footer {
 }
 
 .containerTextoValores{
+    justify-content:center;
     margin-top: 10px;
-    width: 80%;
+    width: 75%;
+}
+
+.rodape{
+    width: 100%;
+    height: 15vh;
+    border-top: 0.4px solid #FFF2E7;
+}
+
+.rodape-titulo{
+    font-weight: 300;
+    font-size:18px ;
+    color: #FFF2E7;
+    display: flex;
+    align-items:center;
+    justify-content: center;
 }
 /* 
 ------------------------ 
