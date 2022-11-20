@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./assets/icon/iconHollowWhiteSolid.svg" type="image/x-icon">
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/cadastro.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <header>
+        <section class="nav">
+                <a class="imgHeader" href="./index.html#hero"><img src="./assets/icon/iconHollowWhiteSolid.svg" alt=""></a>
+        </section>
+    </header>
+
+    <main>
+        <div class="form">
+            <section class="campo">
+                <p id="avisoNome" class="avisoNome">Seu nome de usuário deve conter mais de 6 dígitos</p>
+                <label for="">Nome</label>
+                <input type="text" name="txNome" id="txNome">
+            </section>
+            <section class="campo">
+                <p id="avisoEmail" class="avisoEmail">Email inválido</p>
+                <label for="">Email</label>
+                <input type="email" name="txEmail" id="txEmail">
+            </section>
+            <section class="campo">
+                <p id="avisoSenha" class="avisoSenha">Senhas incompátiveis</p>
+                <label for="">Senha</label>
+                <input type="password" name="txSenha" id="txSenha">
+            </section>
+            <section class="campo">
+                <p id="avisoConfirmarSenha" class="avisoConfirmarSenha">Senha incompatíveis</p>
+                <label for="">Confirmar Senha</label>
+                <input type="password" name="txConfirmarSenha" id="txConfirmarSenha">
+            </section>
+            
+            <button class="botao" id="botao" onclick="cadastrar()">Cadastrar</button>
+            <div id="div_aguardar" class="loading-div">
+                <img src="./assets/img/hollow-knight-mine.gif" id="loading-gif">
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <img class="imgFooter" src="./assets/img/waveFormulario.svg" alt="">
+    </footer>
+
+</body>
+</html>
+
+<script src="./js/funcoes.js"></script>
+<script>
+     function cadastrar() {
+        aguardar()
+        //Recupere o valor da nova input pelo nome do id
+        // Agora vá para o método fetch logo abaixo
+        var nomeVar = txNome.value;
+        var emailVar = txEmail.value;
+        var senhaVar = txSenha.value;
+        var confirmacaoSenhaVar = txConfirmarSenha.value;
+        var cadastroIncompleto = false;
+        console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar)
+
+
+        if(nomeVar.length < 4){
+        exibirAviso(avisoNome, txNome, "Seu nome de usuário deve conter mais de 4 dígitos")
+        }
+    
+        if (emailVar == ""){
+        exibirAviso(avisoEmail, txEmail, "Insira um email")
+        }
+    
+        if(emailVar.indexOf("@") < 3 || emailVar.indexOf(" ") >= 0 || !emailVar.indexOf(".")){
+        exibirAviso(avisoEmail, txEmail, "Email inválido")
+        }
+    
+        if(senhaVar.length < 5){
+        exibirAviso(avisoSenha, txSenha, "Senha muito curta")
+        }
+        
+        if(senhaVar != confirmacaoSenhaVar){
+        exibirAviso(avisoConfirmarSenha, txConfirmarSenha, "Senhas incompátiveis")
+        }
+
+        function exibirAviso(paragrafoTag, input, mensagem){
+          paragrafoTag.innerHTML = mensagem;
+          paragrafoTag.style.display = "block";
+          
+          cadastroIncompleto = true;
+          finalizarAguardar()
+        }
+
+        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
+            cardErro.style.display = "block"
+            mensagem_erro.innerHTML = "Preencha os campos";
+
+            finalizarAguardar();
+            return false;
+        }
+        else {
+            setInterval(sumirMensagem, 5000)
+        }
+
+        // Enviando o valor da nova input
+        if (!cadastroIncompleto){
+          fetch("/usuarios/cadastrar", {
+              method: "POST",
+              headers: {
+                  "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                  // crie um atributo que recebe o valor recuperado aqui
+                  // Agora vá para o arquivo routes/usuario.js
+                  nomeServer: nomeVar,
+                  emailServer: emailVar,
+                  senhaServer: senhaVar
+              })
+          }).then(function (resposta) {
+
+              console.log("resposta: ", resposta);
+
+              if (resposta.ok) {
+                  cardErro.style.display = "block";
+
+                  mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+
+                  setTimeout(() => {
+                      window.location = "login.html";
+                  }, "2000")
+                  
+                  limparFormulario();
+                  finalizarAguardar();
+              } else {
+                  throw ("Houve um erro ao tentar realizar o cadastro!");
+              }
+          }).catch(function (resposta) {
+              console.log(`#ERRO: ${resposta}`);
+              finalizarAguardar();
+          });
+
+          return false;
+      }
+}
+    function sumirMensagem() {
+        cardErro.style.display = "none"
+    }
+</script>
