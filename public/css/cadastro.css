@@ -1,0 +1,49 @@
+@font-face {
+    font-family:'hollow';
+    src: url('../assets/font/Trajan Pro Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body{
+    font-family: 'hollow',Times,serif;
+}
+
+header {
+    display: flex;
+    padding: 0.375rem 0;
+    background-color: #0e0e0e;
+    width: 100%;
+    justify-content: flex-start;
+}
+
+main{
+    background-color: blue;
+}
+
+.imgHeader{
+    margin-left: 20px;;
+}
+
+.imgFooter{
+    width: 100%;
+}
+
+.avisoNome, .avisoEmail, .avisoSenha, .avisoConfirmarSenha{
+    display: none;
+    color: rgb(116,29,26);
+    max-width: 300px;
+    font-size: 0.825em;
+    margin-bottom: 5px;
+}
+
+.loading-div {
+    width: 50px;
+    margin: auto;
+    display: none;
+  }
+  
+  .loading-div img {
+    height: 50px;
+    width: 50px;
+  }
