@@ -7,7 +7,7 @@
     <link rel="shortcut icon" href="./assets/icon/iconHollowWhiteSolid.svg" type="image/x-icon">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/cadastro.css">
-    <title>Cadastro</title>
+    <title>Login</title>
 </head>
 <body>
     <header>
@@ -20,11 +20,6 @@
         <div class="form">
             <div class="box-form">
                 <section class="campo">
-                    <p id="avisoNome" class="avisoNome"></p>
-                    <label for="txNome">Nome</label>
-                    <input type="text" name="txNome" id="txNome">
-                </section>
-                <section class="campo">
                     <p id="avisoEmail" class="avisoEmail"></p>
                     <label for="txEmail">Email</label>
                     <input type="email" name="txEmail" id="txEmail">
@@ -33,11 +28,6 @@
                     <p id="avisoSenha" class="avisoSenha"></p>
                     <label for="txSenha">Senha</label>
                     <input type="password" name="txSenha" id="txSenha">
-                </section>
-                <section class="campo">
-                    <p id="avisoConfirmarSenha" class="avisoConfirmarSenha"></p>
-                    <label for="txConfirmarSenha">Confirmar Senha</label>
-                    <input type="password" name="txConfirmarSenha" id="txConfirmarSenha">
                 </section>
                 
                 <button class="botao" id="botao" onclick="cadastrar()">Cadastrar</button>

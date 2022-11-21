@@ -16,7 +16,8 @@ body{
 header {
     display: flex;
     padding: 0.375rem 0;
-    background-color: #0e0e0e;
+    background: rgb(54,54,54);
+    background: linear-gradient(180deg, rgba(54,54,54,1) 5%, rgba(37,37,37,1) 22%, rgba(0,0,0,1) 45%);
     width: 100%;
     justify-content: center;
 }
@@ -29,7 +30,8 @@ main{
 footer {
     display: flex;
     padding: 0.375rem 0;
-    background-color: #0e0e0e;
+    background: rgb(54,54,54);
+    background: linear-gradient(180deg, rgba(54,54,54,1) 5%, rgba(37,37,37,1) 22%, rgba(0,0,0,1) 45%);
     width: 100%;
     justify-content: center;
 }
@@ -45,6 +47,20 @@ footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.btnContainer{
+    display: flex;
+    width: 18%;
+    justify-content: space-evenly;
+}
+
+.btn-nav{
+    color: #FFF2E7;
+    border: 1px solid #FFF2E7;
+    background-color: transparent;
+    border-radius:5px;
+    padding: 5px;
 }
 
 .itemContainer{
