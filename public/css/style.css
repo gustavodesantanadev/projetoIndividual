@@ -65,11 +65,13 @@ footer {
 
 .itemContainer{
     display: flex;
-    width: 40%;
+    width: 45%;
     justify-content: space-evenly;
 }
 
 .item{
+    display: flex;
+    align-items: center;
     color: white;
 }
 
@@ -152,6 +154,7 @@ footer {
     font-size: 40px;
     font-weight: bold;
     margin-bottom: 10px;
+    text-align: center;
 }
 
 .textoMinhaHistoria{
@@ -161,6 +164,10 @@ footer {
 .containerConteudoMH{
     display: flex;
     justify-content: space-evenly;
+}
+
+.imgHistoria{
+    width: 30%;
 }
 
 .containerValores{
@@ -177,6 +184,7 @@ footer {
     justify-content: center;
     width: 40%;
     margin-bottom:20px;
+    text-align: center;
 }
 
 .containerCards{
@@ -244,6 +252,26 @@ footer {
     align-items:center;
     justify-content: center;
 }
+
+.img-js{
+    display: none;
+}
+
+.ativo{
+    display: block !important;
+    animation-name: opacity;
+    animation-duration: 1s;
+}
+  
+@keyframes opacity {
+    from {opacity: 0%;}
+    to {opacity: 100%;}
+  }
+
+.js-scroll.animate #t200{
+    transition: 0.8s;
+    transition-delay: 0.2s;
+  }
 /* 
 ------------------------ 
 Scroll Nav Bar
