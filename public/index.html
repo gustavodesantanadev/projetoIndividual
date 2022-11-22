@@ -18,16 +18,13 @@
                         <section class="item"> <a href="#sobreHollow">Hollow Knight</a> </section>
                         <section class="item"> <a href="#historia">Minha História</a></section>
                         <section class="item"> <a href="#valores">Valores</a> </section>
-                    </section>
-
-                    <section class="btnContainer">
                         <section class="item"> <a href="./cadastro.html"><button class="btn-nav pointer">Cadastrar</button> </a></section>
                         <section class="item"> <a href="./login.html"><button class=" btn-nav pointer">Login</button> </a></section>
                     </section>
             </section>
         </div>
     </header>
-
+    
     <main>
        <div id="hero" class="containerHero">
             <img src="./assets/img/hero.png" alt="" >
@@ -35,7 +32,14 @@
 
         <div id="sobreHollow" class="containerSobre">
             <div class="containerImagemSobre">
-                <img class="imagemSobreBoss" src="./assets/img/lutaBoss1.png" alt="">
+                <ul class="js-scrollRight" id="t200">
+                    <li class="img-js ">
+                        <img class="imagemSobreBoss" src="./assets/img/lutaBoss1.png" alt="">
+                    </li>
+                    <li class="img-js">
+                        <img class="imagemSobreBoss" src="./assets/img/hollowlLuta.jpg" alt="">
+                    </li>
+                </ul>
             </div>
 
             <div class="containerConteudoSobre">
@@ -73,8 +77,8 @@
                                     e querendo desistir as vezes ele e eu continuavamos seguindo em frente e 
                                     no final a sensação de encontrar as respostas me fez amar esse jogo!</p>
                             </div>
-                        </div>
-                        <img src="./assets/img/bugs.png" alt="">
+                        </div>                        
+                            <img class="imgHistoria" src="./assets/img/nuvem.jpg" alt="">
                     </div>
                 </div>
                 <img src="./assets/img/hollowBike.svg" alt="">
@@ -124,5 +128,6 @@
     </footer>
 
     <script src="./js/scrollNavBar.js"></script>
+    <script src="./js/carrosel.js"></script>
 </body>
 </html>

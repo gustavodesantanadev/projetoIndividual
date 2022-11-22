@@ -11,7 +11,6 @@ body{
 
 header {
     display: flex;
-    padding: 0.375rem 0;
     background: rgb(54,54,54);
     background: linear-gradient(180deg, rgba(54,54,54,1) 5%, rgba(37,37,37,1) 22%, rgba(0,0,0,1) 45%);
     width: 100%;
@@ -22,12 +21,13 @@ main{
     width: 100%;
     background-image: url(../assets/img/backCadastro.jpg);
     background-size: cover;
-    height: 89vh /* 100% */;
+    background-position: contain;
+    background-repeat: no-repeat;
+    height: 100vh;
 }
 
 footer {
     display: flex;
-    padding: 0.375rem 0;
     width: 100%;
     height:100%;
     max-height: 1100px;
@@ -35,7 +35,7 @@ footer {
 }
 
 .imgHeader{
-    margin-left: 20px;
+    margin-left: 65px;
 }
 
 .avisoNome, .avisoEmail, .avisoSenha, .avisoConfirmarSenha{
@@ -61,18 +61,30 @@ footer {
     display: flex;
     justify-content: center;
     width: 100%;
+    height: 100%;
 }
 
 .box-form{
-    background-color:tomato;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content:center; 
     margin: 70px auto;
     width: 30%;
-    height: 50%;
+    color: #FFF2E7;
+    background: rgba( 166, 166, 166, 0.2 );
+    /* box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 ); */
+    backdrop-filter: blur( 1.5px );
+-webkit-backdrop-filter: blur( 1.5px );
+border-radius: 10px;
+border: 1px solid rgba( 255, 255, 255, 0.18 );
 }
 
 .imgFooter{
     width: 100%;
+}
+
+.campo{
+    width: 50%;
+    margin-bottom: 20px;
 }
