@@ -7,11 +7,11 @@
     <link rel="shortcut icon" href="./assets/icon/iconHollowWhiteSolid.svg" type="image/x-icon">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/cadastro.css">
-    <title>Login</title>
+    <title>Cadastro</title>
 </head>
 <body>
     <header>
-        <section class="nav">
+        <section style="position:relative;" class="nav">
                 <a class="imgHeader" href="./index.html#hero"><img src="./assets/icon/iconHollowWhiteSolid.svg" alt=""></a>
         </section>
     </header>
@@ -20,17 +20,16 @@
         <div class="form">
             <div class="box-form">
                 <section class="campo">
-                    <p id="avisoEmail" class="avisoEmail"></p>
+                    <p class="pAviso" id="pAviso"></p>
                     <label for="txEmail">Email</label>
                     <input type="email" name="txEmail" id="txEmail">
                 </section>
                 <section class="campo">
-                    <p id="avisoSenha" class="avisoSenha"></p>
                     <label for="txSenha">Senha</label>
                     <input type="password" name="txSenha" id="txSenha">
                 </section>
-                
-                <button class="botao" id="botao" onclick="cadastrar()">Cadastrar</button>
+                <button class="btn-nav pointer pointer" id="botaoSeta" onclick="entrar()">Cadastrar</button>
+
                 <div id="div_aguardar" class="loading-div">
                     <img src="./assets/img/hollow-knight-mine.gif" id="loading-gif">
                 </div>
@@ -47,98 +46,74 @@
 
 <script src="./js/funcoes.js"></script>
 <script>
-     function cadastrar() {
-        aguardar()
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var nomeVar = txNome.value;
+
+function entrar() {
+        aguardar();
+
         var emailVar = txEmail.value;
         var senhaVar = txSenha.value;
-        var confirmacaoSenhaVar = txConfirmarSenha.value;
-        var cadastroIncompleto = false;
-        console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar)
+        var loginIncompleto = false;
 
+        if (emailVar == "" || senhaVar == "") {
+            pAviso.style.display = 'block'
 
-        if(nomeVar.length < 4){
-        exibirAviso(avisoNome, txNome, "Seu nome de usuário deve conter mais de 4 dígitos")
-        }
-    
-        if (emailVar == ""){
-        exibirAviso(avisoEmail, txEmail, "Insira um email")
-        }
-    
-        if(emailVar.indexOf("@") < 3 || emailVar.indexOf(" ") >= 0 || !emailVar.indexOf(".")){
-        exibirAviso(avisoEmail, txEmail, "Email inválido")
-        }
-    
-        if(senhaVar.length < 5){
-        exibirAviso(avisoSenha, txSenha, "Senha muito curta")
-        }
-        
-        if(senhaVar != confirmacaoSenhaVar){
-        exibirAviso(avisoConfirmarSenha, txConfirmarSenha, "Senhas incompátiveis")
-        }
-
-        function exibirAviso(paragrafoTag, input, mensagem){
-          paragrafoTag.innerHTML = mensagem;
-          paragrafoTag.style.display = "block";
-          
-          cadastroIncompleto = true;
-          finalizarAguardar()
-        }
-
-        if (nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "Preencha os campos";
-
+            loginIncompleto = true;
             finalizarAguardar();
             return false;
         }
-        else {
-            setInterval(sumirMensagem, 5000)
-        }
+        
 
-        // Enviando o valor da nova input
-        if (!cadastroIncompleto){
-          fetch("/usuarios/cadastrar", {
-              method: "POST",
-              headers: {
-                  "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                  // crie um atributo que recebe o valor recuperado aqui
-                  // Agora vá para o arquivo routes/usuario.js
-                  nomeServer: nomeVar,
-                  emailServer: emailVar,
-                  senhaServer: senhaVar
-              })
-          }).then(function (resposta) {
+        console.log("FORM LOGIN: ", emailVar);
+        console.log("FORM SENHA: ", senhaVar);
 
-              console.log("resposta: ", resposta);
 
-              if (resposta.ok) {
-                  cardErro.style.display = "block";
+        if(!loginIncompleto){
+        fetch("/usuarios/autenticar", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                emailServer: emailVar,
+                senhaServer: senhaVar
+            })
+        }).then(function (resposta) {
+            console.log("ESTOU NO THEN DO entrar()!")
 
-                  mensagem_erro.innerHTML = "Cadastro realizado com sucesso! Redirecionando para tela de Login...";
+            if (resposta.ok) {
+                console.log(resposta);
 
-                  setTimeout(() => {
-                      window.location = "login.html";
-                  }, "2000")
-                  
-                  limparFormulario();
-                  finalizarAguardar();
-              } else {
-                  throw ("Houve um erro ao tentar realizar o cadastro!");
-              }
-          }).catch(function (resposta) {
-              console.log(`#ERRO: ${resposta}`);
-              finalizarAguardar();
-          });
+                resposta.json().then(json => {
+                    console.log(json);
+                    console.log(JSON.stringify(json));
 
-          return false;
-      }
-}
-    function sumirMensagem() {
-        cardErro.style.display = "none"
+                    sessionStorage.EMAIL_USUARIO = json.email;
+                    sessionStorage.NOME_USUARIO = json.nome;
+                    sessionStorage.ID_USUARIO = json.idCadastro;
+
+                    setTimeout(function () {
+                        window.location = "./perfil.html";
+                    }, 1000); // apenas para exibir o loading
+
+                });
+
+            } else {
+                console.log("Houve um erro ao tentar realizar o login!");
+                
+                pAviso.innerHTML = "Email e/ou senha inválido(s)"
+                pAviso.style.display = 'block'
+
+                resposta.text().then(texto => {
+                    console.error(texto);
+                    finalizarAguardar(texto);
+                });
+            }
+
+        }).catch(function (erro) {
+            console.log(erro);
+        })
+
+        return false;
     }
+}
 </script>

@@ -49,18 +49,18 @@ footer {
     justify-content: space-between;
 }
 
-.btnContainer{
-    display: flex;
-    width: 18%;
-    justify-content: space-evenly;
-}
-
 .btn-nav{
     color: #FFF2E7;
     border: 1px solid #FFF2E7;
     background-color: transparent;
     border-radius:5px;
     padding: 5px;
+}
+
+.btn-nav:hover{
+    color: black;
+    background: rgb(228,228,228);
+    background: linear-gradient(180deg, rgba(228,228,228,1) 12%, rgba(221,205,162,1) 62%);
 }
 
 .itemContainer{
