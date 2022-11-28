@@ -104,6 +104,7 @@ footer {
     background: linear-gradient(180deg, rgba(54,54,54,1) 5%, rgba(37,37,37,1) 22%, rgba(0,0,0,1) 45%);
     border-radius:5px;
     padding: 5px;
+    margin-bottom:30px;
 }
 
 .btn-nav:hover{
@@ -111,7 +112,6 @@ footer {
     background: rgb(228,228,228);
     background: linear-gradient(180deg, rgba(228,228,228,1) 12%, rgba(221,205,162,1) 62%);
 }
-
 
 
 /*

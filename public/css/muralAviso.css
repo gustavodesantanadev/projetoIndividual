@@ -1,0 +1,9 @@
+.containerComentario{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+
+.tituloComentario{
+    font-size:60px;
+}

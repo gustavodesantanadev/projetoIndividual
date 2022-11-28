@@ -94,9 +94,50 @@ function cadastrar(req, res) {
     }
 }
 
+function addComentario(req, res){
+    var idUsuario = req.params.idUsuario;
+    var textoComentario = req.body.comentario
+
+    usuarioModel.addComentario(idUsuario,textoComentario)
+
+    .then(
+        function (resultado) {
+            res.json(resultado);
+        }
+    )
+    .catch(
+        function (erro) {
+            console.log(erro);
+            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+            res.status(500).json(erro.sqlMessage);
+        }
+    );
+
+}
+
+
+function mostrarComentarios(req, res){
+    usuarioModel.mostrarComentarios()
+        .then(
+            function (resultado) {
+                console.log(res.json(resultado));
+                console.log(resultado)
+            }
+        )
+        .catch(
+            function (erro) {
+                console.log(erro);
+                console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
+                res.status(500).json(erro.sqlMessage);
+            }
+        );
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
-    testar
+    testar,
+    addComentario,
+    mostrarComentarios
 }
