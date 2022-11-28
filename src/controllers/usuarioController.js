@@ -95,30 +95,10 @@ function cadastrar(req, res) {
 }
 
 function addComentario(req, res){
+    var idUsuario = req.params.idUsuario;
     var textoComentario = req.body.comentario
 
-
-    usuarioModel.addComentario(textoComentario)
-
-    .then(
-        function (resultado) {
-            res.json(resultado);
-        }
-    )
-    .catch(
-        function (erro) {
-            console.log(erro);
-            console.log("Houve um erro ao realizar o post: ", erro.sqlMessage);
-            res.status(500).json(erro.sqlMessage);
-        }
-    );
-
-}
-
-function atualizarDados(req, res){
-    var idUsuario = req.body.idUsuario
-
-    usuarioModel.atualizarDados(idUsuario)
+    usuarioModel.addComentario(idUsuario,textoComentario)
 
     .then(
         function (resultado) {
@@ -134,6 +114,7 @@ function atualizarDados(req, res){
     );
 
 }
+
 
 function mostrarComentarios(req, res){
     usuarioModel.mostrarComentarios()
@@ -158,6 +139,5 @@ module.exports = {
     listar,
     testar,
     addComentario,
-    atualizarDados,
     mostrarComentarios
 }

@@ -51,33 +51,25 @@
 
 <script>
     b_usuario.innerHTML = sessionStorage.getItem("NOME_USUARIO") + ""
-
-    function logout(){
-        sessionStorage.EMAIL_USUARIO = null;
-        sessionStorage.NOME_USUARIO = null;
-        sessionStorage.ID_USUARIO = null;
-        sessionStorage.FK_COMENTARIO = null;
-        sessionStorage.FK_CHEFE = null;
-
-        location = "index.html"
-    }
-
-
-            function comentar(){
+    const idUsuario = sessionStorage.getItem("ID_USUARIO");
+    
+        function comentar(){
+            var text = textArea.value;
             console.log(sessionStorage.getItem("FK_COMENTARIO"))
-            if(sessionStorage.getItem("FK_COMENTARIO") == 'null'){
-                fetch("/usuarios/addComentario", {
+            if(sessionStorage.getItem("FK_COMENTARIO") == 'undefined'){
+                fetch(`/usuarios/addComentario/${idUsuario}`, {
                 method: "POST",
                 headers: {
                     "Content-Type" : "application/json"
                 },
                 body: JSON.stringify({
-                    comentario: textArea.value
+                    idUsuario: idUsuario,
+                    comentario: text
                 })
                 }).then(function (resposta){
                     if(resposta.ok){
                     console.log("Comentário feito com sucesso!")
-                    atualizarDados()
+                    sessionStorage.FK_COMENTARIO = idUsuario
                     } else {
                     console.log("Erro no then!")
                     }
@@ -89,33 +81,8 @@
             }
         }
 
-        
-
-        function atualizarDados(){
-            const idUsuario = sessionStorage.getItem("ID_USUARIO");
-            sessionStorage.FK_COMENTARIO = idUsuario
-
-            fetch("/usuarios/atualizarDados", {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({
-                idUsuario: idUsuario
-            })
-            }).then(function(resposta){
-                if(resposta.ok){
-                console.log("Dados atualizados")
-                mostrarComentarios()
-                }else{
-                console.log("Erro ao atualizar dados")
-                }
-            }).catch(function (resposta){
-                console.log(`#ERRO: ${resposta}`);
-            })
-        }
-
         function mostrarComentarios(){
+
             fetch("/usuarios/mostrarComentarios").then(
             function (resposta){
                 if(resposta.ok){
@@ -138,6 +105,6 @@
             }
             )
         }
-  mostrarComentarios()
-    
+        
+        mostrarComentarios()
 </script>

@@ -31,25 +31,16 @@ function cadastrar(nome, email, senha) {
     return database.executar(instrucao);
 }
 
-function addComentario(textoComentario){
-    var instrucao = `INSERT INTO comentario(comentario) values
-    ("${textoComentario}");
+function addComentario(idUsuario,textoComentario){
+    var instrucao = `INSERT INTO comentario(comentario,fkUsuario) values
+    ('${textoComentario}', ${idUsuario});
    ` 
-
 
     return database.executar(instrucao)
 }
 
-/* Atualiza a fk do comentário */
-function atualizarDados(idUsuario){
-    var instrucao = `
-    UPDATE usuario SET fkComentario = ${idUsuario} WHERE idUsuario = ${idUsuario};
-   ` 
-   return database.executar(instrucao)
-}
-
 function mostrarComentarios(){
-    var instrucao = `SELECT * FROM comentario JOIN usuario WHERE comentario.idComentario = usuario.fkComentario;`
+    var instrucao = `SELECT * FROM comentario JOIN usuario  WHERE comentario.fkUsuario = usuario.idUsuario;`
 
     return database.executar(instrucao)
 }
@@ -59,6 +50,5 @@ module.exports = {
     cadastrar,
     listar,
     addComentario,
-    atualizarDados,
     mostrarComentarios
 };
