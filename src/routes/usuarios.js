@@ -20,4 +20,12 @@ router.post("/autenticar", function (req, res) {
     usuarioController.entrar(req, res);
 });
 
+router.post("/addComentario/:idUsuario", function(req, res){
+    usuarioController.addComentario(req, res);
+})
+
+router.get("/mostrarComentarios", function(req, res){
+    usuarioController.mostrarComentarios(req, res);
+})
+
 module.exports = router;
