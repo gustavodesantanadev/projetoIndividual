@@ -1,0 +1,14 @@
+.todosChefes{
+    display:flex;
+    flex-direction:column;
+    width:90%;
+}
+
+.chefe-legenda{
+    display: flex;
+    width:30%;
+}
+
+.imgChefes{
+    width:30%;
+}
