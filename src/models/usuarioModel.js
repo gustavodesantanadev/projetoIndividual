@@ -45,10 +45,35 @@ function mostrarComentarios(){
     return database.executar(instrucao)
 }
 
+function votar(idChefe, idUsuario){
+    var instrucao = `
+    UPDATE chefe SET votos = (votos + 1) WHERE idChefe = ${idChefe};
+    `;
+  
+    votarIntrução2(idChefe, idUsuario)
+    return database.executar(instrucao)
+  }
+
+function votarIntrução2(idChefe, idUsuario){
+    var instrucao = `
+    UPDATE usuario SET fkChefe = ${idChefe} where idUsuario = ${idUsuario};
+    `;
+
+    return database.executar(instrucao)
+}
+
+function selecionarTop10(){
+    var instrucao = `SELECT * FROM chefe ORDER BY votos desc limit 5;` 
+
+    return database.executar(instrucao)
+}
+
 module.exports = {
     entrar,
     cadastrar,
     listar,
     addComentario,
-    mostrarComentarios
+    mostrarComentarios,
+    votar,
+    selecionarTop10
 };
