@@ -28,12 +28,4 @@ router.get("/mostrarComentarios", function(req, res){
     usuarioController.mostrarComentarios(req, res);
 })
 
-router.put("/votar", function(req, res){
-    usuarioController.votar(req, res);
-})
-
-router.get("/selecionarTop10", function(req, res){
-    usuarioController.selecionarTop10(req, res);
-})
-
 module.exports = router;
