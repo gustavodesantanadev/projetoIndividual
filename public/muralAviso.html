@@ -16,10 +16,11 @@
             <section class="nav">
                     <a href="./index.html#hero"><img src="./assets/icon/iconHollowWhiteSolid.svg" alt=""></a>
                     <section class="itemContainer">
-                        <section class="item"> <a href="./mural.html">Mural</a> </section>
-                        <section class="item"> <a href="./perfil.html">Votação</a></section>
-                        <section class="item"> <span id="b_usuario">Usuario</span></section>
-                        <section class="item"> <a href="./index.html"><button class=" btn-nav pointer">Sair</button> </a></section>
+                        <section class="item"> <a href="./muralAviso.html">Mural</a> </section>
+                        <section class="item"> <a href="./votacao.html">Votação</a></section>
+                        <section class="item"> <a href="./ranking.html">Ranking</a></section>
+                        <section class="item"> <span id="nomeUsuario">Usuario</span></section>
+                        <section class="item"> <button onclick="sair()" class=" btn-nav pointer">Sair</button></section>
                     </section>
             </section>
         </div>
@@ -50,8 +51,13 @@
 </html>
 
 <script>
-    b_usuario.innerHTML = sessionStorage.getItem("NOME_USUARIO") + ""
+    nomeUsuario.innerHTML = sessionStorage.getItem("NOME_USUARIO") + ""
+    
     const idUsuario = sessionStorage.getItem("ID_USUARIO");
+
+    function sair(){
+        location = "index.html"
+    }
     
         function comentar(){
             var text = textArea.value;
@@ -105,6 +111,5 @@
             }
             )
         }
-        
         mostrarComentarios()
 </script>
