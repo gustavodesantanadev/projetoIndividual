@@ -47,3 +47,7 @@ main{
 .subTituloVotacao{
     font-size: 1.25rem;
 }
+
+.rankings{
+    display: flex;
+}
