@@ -63,7 +63,7 @@ function votarIntrução2(idChefe, idUsuario){
 }
 
 function selecionarTop10(){
-    var instrucao = `SELECT * FROM chefe ORDER BY votos desc limit 5;` 
+    var instrucao = `SELECT * FROM chefe ORDER BY votos desc limit 10;` 
 
     return database.executar(instrucao)
 }
