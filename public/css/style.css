@@ -134,8 +134,6 @@ footer {
 
 .containerHistoria{
     display: flex;
-    height: 100%;
-    max-height: 1180px;
     flex-direction: column;
     background-color: white;
     justify-content:center; 
@@ -144,6 +142,10 @@ footer {
 .containerMinhaHistoria{
     display: flex;
     width: 90%;
+}
+
+.hollowBike{
+    margin-bottom:-5px;
 }
 
 .conteudoMinhaHistoria{
