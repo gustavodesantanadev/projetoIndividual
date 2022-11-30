@@ -1,14 +1,49 @@
+main{
+    background-image:url(../assets/img/bolinhas.svg);
+    background-repeat:repeat-y;
+    width:100%;
+    background-size:contain;
+    padding-bottom: 3rem;
+}
+
 .todosChefes{
-    display:flex;
-    flex-direction:column;
-    width:90%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 2.2813rem;
 }
 
 .chefe-legenda{
     display: flex;
-    width:30%;
+    width:100%;
+    font-size: 1.5rem;
 }
 
 .imgChefes{
-    width:30%;
+    width:100%;
+    border-radius: 0.3125rem;
+    cursor: pointer;
+    transition:.5s;
+    margin-bottom: 0.3125rem;
+}
+
+.imgChefes:hover{
+    filter: brightness(1.3);
+    scale: 1.05;
+}
+
+.containerTitulo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2.25rem 0;
+}
+
+.tituloVotacao{
+    font-size: 3.125rem;
+    font-weight: bold;
+    margin-bottom: 1.25rem;
+}
+
+.subTituloVotacao{
+    font-size: 1.25rem;
 }
