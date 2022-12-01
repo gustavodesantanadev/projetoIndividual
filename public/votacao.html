@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/stylePerfil.css">
     <link rel="stylesheet" href="./css/perfil.css">
     <link rel="shortcut icon" href="./assets/icon/iconHollowWhiteSolid.svg" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Projeto Individual | Gustavo</title>
 </head>
 <body onload="validarSessao()">
@@ -17,8 +18,8 @@
                     <a href="./index.html#hero"><img src="./assets/icon/iconHollowWhiteSolid.svg" alt=""></a>
                     <section class="itemContainer">
                         <section class="item"> <a href="./muralAviso.html">Mural</a> </section>
-                        <section class="item"> <a href="./votacao.html">Votação</a></section>
                         <section class="item"> <a href="./ranking.html">Ranking</a></section>
+                        <section class="item"> <a href="./votacao.html">Votação</a></section>
                         <section class="item"> <span id="nomeUsuario">Usuario</span></section>
                         <section class="item"> <button onclick="sair()" class=" btn-nav pointer">Sair</button></section>
                     </section>
@@ -29,8 +30,8 @@
     <main>
         <div class="container">
             <div class="containerTitulo">
-                <span class="tituloVotacao">Briga de Chefes</span> 
-                <span class="subTituloVotacao" >Vote no seu chefe preferido!</span> 
+                <span class="titulo">Briga de Chefes</span> 
+                <span class="subTitulo" >Vote no seu chefe preferido!</span> 
             </div>
         </div>
 
@@ -98,7 +99,11 @@
                 
             });
             } else {
-                alert("Você já votou, e você só pode uma vez!")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Você Já votou!',
+                    text: 'Só pode votar apenas 1 vez.',
+                })
             }
         
     }

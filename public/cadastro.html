@@ -71,6 +71,10 @@
         console.log(nomeVar, emailVar, senhaVar, confirmacaoSenhaVar)
 
 
+        if (nomeVar == ""){
+        exibirAviso(avisoNome, txNome, "Insira um nome")
+        }
+
         if(nomeVar.length < 4){
         exibirAviso(avisoNome, txNome, "Seu nome de usuário deve conter mais de 4 dígitos")
         }
@@ -81,6 +85,10 @@
     
         if(emailVar.indexOf("@") < 3 || emailVar.indexOf(" ") >= 0 || !emailVar.indexOf(".")){
         exibirAviso(avisoEmail, txEmail, "Email inválido")
+        }
+
+        if (senhaVar == ""){
+        exibirAviso(avisoSenha, txSenha, "Insira uma Senha")
         }
     
         if(senhaVar.length < 5){

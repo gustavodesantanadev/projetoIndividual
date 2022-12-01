@@ -10,9 +10,11 @@ nomeUsuario.innerHTML = sessionStorage.getItem("NOME_USUARIO") + ""
                 rankings.innerHTML += 
                 `
                     <div class="ranking">
-                        <img class="img-bandeira" src="assets/bandeira${i + 1}.png" alt="Posição ${i + 1}"></img> 
-                        <img class="img-Chefes" src="./assets/chefes/${respostaJSON[i].nome}.jpg" alt="${(respostaJSON[i].nome).toLowerCase()}">
-                        <h3 class="titulo-campeao">${respostaJSON[i].nome}</h3>
+                        <div class="ranking-imgs">
+                            <img class="img-posicao" src="assets/posicao/posicao${i + 1}.svg" alt="Posição ${i + 1}"></img> 
+                            <img class="img-Chefes" src="./assets/chefes/${respostaJSON[i].nome}.jpg" alt="${respostaJSON[i].nome}">
+                        </div>
+                        <h3 class="titulo-chefe">${respostaJSON[i].nome}</h3>
                         <div class="votos">
                             <p>Votos</p>
                             <p>${respostaJSON[i].votos}</p>
@@ -26,16 +28,3 @@ nomeUsuario.innerHTML = sessionStorage.getItem("NOME_USUARIO") + ""
         })
     }
 selecionarTop10()
-
-
-// <div class="ranking">
-//                     <div class="ranking-imgs">
-//                         <img class="img-bandeira" src="assets/bandeira${i + 1}.png" alt="Posição ${i + 1}"></img> 
-//                         <img class="img-Chefes" src="./assets/chefes/${respostaJSON[i].nome}.jpg" alt="${(respostaJSON[i].nome).toLowerCase()}">
-//                     </div>
-//                     <h3 class="titulo-campeao">${respostaJSON[i].nome}</h3>
-//                     <div class="ranking-votos">
-//                         <p>Votos</p>
-//                         <p>${respostaJSON[i].votos}</p>
-//                     </div>
-//         </div>
