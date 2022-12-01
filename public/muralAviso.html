@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="./css/stylePerfil.css">
     <link rel="stylesheet" href="./css/muralAviso.css">
     <link rel="shortcut icon" href="./assets/icon/iconHollowWhiteSolid.svg" type="image/x-icon">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <title>Projeto Individual | Gustavo</title>
 </head>
 <body onload="validarSessao()">
@@ -17,8 +18,8 @@
                     <a href="./index.html#hero"><img src="./assets/icon/iconHollowWhiteSolid.svg" alt=""></a>
                     <section class="itemContainer">
                         <section class="item"> <a href="./muralAviso.html">Mural</a> </section>
-                        <section class="item"> <a href="./votacao.html">Votação</a></section>
                         <section class="item"> <a href="./ranking.html">Ranking</a></section>
+                        <section class="item"> <a href="./votacao.html">Votação</a></section>
                         <section class="item"> <span id="nomeUsuario">Usuario</span></section>
                         <section class="item"> <button onclick="sair()" class=" btn-nav pointer">Sair</button></section>
                     </section>
@@ -26,14 +27,16 @@
         </div>
     </header>
     
-    <main>
+    <main class="main">
         <div class="container">
-            <div class="containerComentario">
-                <h1 class="tituloComentario">Nosso Mural</h1>
-                <p class="comentarioParagrafo">Adicione um comentario e vejo os cometarios de outras pessoas!</p>
-            
-                <textarea class="comentario" name="textArea" id="textArea" cols="30" rows="10"></textarea>
-                <button class="btn-nav pointer" onclick="comentar()" id="botaoComentario">Adicionar Comentário</button>
+            <div class="containerTitulo">
+                <span class="titulo">Nosso Mural</span> 
+                <span class="subTitulo" >Deixe um comentario sobre o jogo e veja comentarios de outros usuarios!</span> 
+            </div>
+                <div class="containerComentario">
+                    <textarea class="comentario" name="textArea" id="textArea" cols="30" rows="10"></textarea>
+                    <button class="btn-nav pointer mb20" onclick="comentar()" id="botaoComentario">Adicionar Comentário</button>
+                </div>
                 <div id="divComentarios">
 
                 </div>
@@ -84,7 +87,11 @@
                     console.log(`#ERRO: ${resposta}`);
                 })
             } else {
-                alert("Você já realizou um comentário, e você só pode comentar uma vez")
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Já Comentou!',
+                    text: 'Vimos aqui que você já realizou um comentário, e você só pode comentar uma vez!',
+                })
             }
         }
 
@@ -101,7 +108,8 @@
                     divComentarios.innerHTML += 
                     `
                     <div class="comentarioFeito">
-                        <b>${respostaJSON[i].nome}:</b> ${respostaJSON[i].comentario}
+                        <span class="nomeComentario">${respostaJSON[i].nome}:</span> 
+                        <span class="conteudoComentario"> ${respostaJSON[i].comentario}</span>
                     </div>
                 `
                     }
