@@ -1,8 +1,8 @@
 function exibirChefes(){
-    const nomeChefe = ["Imenso Batedor Musgoso","Cavaleiro da Colmeia","O Colecionador",
-    "Defensor do Esterco", "Falso Cavaleiro", "Flukemarm","Gorb","Grimm","Guardião Cristalizado", 
-    "Guerreiro das Almas","Hornet", "Hu", "Mawlek Incubador", "Lordes Louva Deus", "Mãe Mosca","Marmu","Mestre das Almas", 
-    "Nosk", "Mestre do Ferrão Oro","Irmãos Oro & Mato", "Receptáculo Quebrado", "Rei Vengemosca","Mestre da Pintura Sheo", "Xero"]
+  const nomeChefe = ["Cavaleiro da Colmeia","O Colecionador","Defensor do Esterco","Falso Cavaleiro","Flukemarm","Guerreiro das Almas",
+    "Gorb","Grimm","Guardião Cristalizado","Hornet","Hu","Imenso Batedor Musgoso","Irmãos Oro & Mato","Lordes Louva Deus","Mãe Mosca",
+    "Marmu","Mawlek Incubador","Mestre das Almas","Mestre do Ferrão Oro","Mestre da Pintura Sheo","Nosk",
+    "Rei Vengemosca","Receptáculo Quebrado","Xero"];
 
     const divTodosChefes = document.querySelector(".todosChefes");
 
@@ -11,6 +11,7 @@ function exibirChefes(){
       <div class="chefes">
             <img class="imgChefes" src="assets/chefes/${nomeChefe[i]}.jpg" alt="${nomeChefe[i]}">
             <span class="chefe-legenda">${nomeChefe[i]}</span>
+            <span class="idCampeao">${i + 1}</span>
       </div>
       `
     }
